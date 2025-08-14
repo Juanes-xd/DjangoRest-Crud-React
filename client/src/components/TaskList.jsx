@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { getAllTask } from "../api/task.api"
-
+import { TaskCard } from "./TaskCard";
 
 export default function TaskList() {
     const [tasks, setTasks] = useState([]);
@@ -21,11 +21,7 @@ export default function TaskList() {
 
     return (
         <div>
-            {tasks.map(task => (
-                <div key={task.id}>
-                    <h3>{task.title}</h3>
-                    <p>{task.description}</p>
-                </div>
+            {tasks.map(task => (<TaskCard key={task.id} task={task} />
             ))}
         </div>
     )
