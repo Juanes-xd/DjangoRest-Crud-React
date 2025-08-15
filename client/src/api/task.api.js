@@ -39,7 +39,7 @@ export const deleteTask = async (id) => {
 
 export const updateTask = async (id, updatedTask) => {
     try {
-        const response = await taskApi.put(`/${id}`, updatedTask);
+        const response = await taskApi.put(`/${id}/`, updatedTask);
         return response.data;
     } catch (error) {
         console.error("Error updating task:", error);
