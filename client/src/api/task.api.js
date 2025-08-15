@@ -35,3 +35,24 @@ export const deleteTask = async (id) => {
         throw error;
     }
 }
+
+
+export const updateTask = async (id, updatedTask) => {
+    try {
+        const response = await taskApi.put(`/${id}`, updatedTask);
+        return response.data;
+    } catch (error) {
+        console.error("Error updating task:", error);
+        throw error;
+    }
+}
+
+export const getTask = async (id) => {
+    try {
+        const response = await taskApi.get(`/${id}/`);
+        return response.data;
+    } catch (error) {
+        console.error("Error fetching task:", error);
+        throw error;
+    }
+}
