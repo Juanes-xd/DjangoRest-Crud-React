@@ -9,6 +9,7 @@ export default function TaskList() {
         const fetchTasks = async () => {
             try {
                 const response = await getAllTask();
+                console.log("Fetched tasks2:", response.data);
                 setTasks(response.data);
             } catch (error) {
                 console.error("Error fetching tasks:", error);
@@ -21,8 +22,13 @@ export default function TaskList() {
 
     return (
         <div>
-            {tasks.map(task => (<TaskCard key={task.id} task={task} />
-            ))}
+            {Array.isArray(tasks) ? (
+                tasks.map((task) => (
+                    <TaskCard key={task.id} task={task} />
+                ))
+            ) : (
+                <p>No tasks available</p>
+            )}
         </div>
     )
 }
