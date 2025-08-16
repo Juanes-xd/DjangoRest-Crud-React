@@ -35,13 +35,13 @@ export function TaskFormPage() {
     })
 
     return (
-        <div>
+        <div className='max-w-md mx-auto'>
             <form onSubmit={onSubmit}>
-                <input type="text" placeholder="title" {...register("title", { required: true })} />
-                {errors.title && <span>This field is required</span>}
-                <textarea rows="4" placeholder="Description" {...register("description", { required: true })}></textarea>
-                {errors.description && <span>This field is required</span>}
-                <button>Save</button>
+                <input className='border border-gray-300 p-2 rounded-md w-full mb-2' type="text" placeholder="title" {...register("title", { required: true })} />
+                {errors.title && <span className='text-red-500'>This field is required</span>}
+                <textarea className='border border-gray-300 p-2 rounded-md w-full mb-2' rows="4" placeholder="Description" {...register("description", { required: true })}></textarea>
+                {errors.description && <span className='text-red-500'>This field is required</span>}
+                <button className='bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600'>Save</button>
             </form>
             {params.id && <button onClick={async () => {
                 const accepted = window.confirm("Are you sure you want to delete this task?")
@@ -50,7 +50,7 @@ export function TaskFormPage() {
                     toast.success("Task deleted successfully")
                     navigate("/tasks")
                 }
-            }} >Delete</button>}
+            }} className='bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600'>Delete</button>}
         </div>
     )
 }
