@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { createTask, deleteTask, updateTask, getTask } from '../api/task.api'
 import { useNavigate, useParams } from 'react-router-dom'
-
+import { toast } from 'react-hot-toast'
 
 export function TaskFormPage() {
 
@@ -26,8 +26,10 @@ export function TaskFormPage() {
     const onSubmit = handleSubmit(async data => {
         if (params.id) {
             await updateTask(params.id, data)
+            toast.success("Task updated successfully")
         } else {
             await createTask(data)
+            toast.success("Task created successfully")
         }
         navigate("/tasks")
     })
@@ -45,6 +47,7 @@ export function TaskFormPage() {
                 const accepted = window.confirm("Are you sure you want to delete this task?")
                 if (accepted) {
                     await deleteTask(params.id)
+                    toast.success("Task deleted successfully")
                     navigate("/tasks")
                 }
             }} >Delete</button>}

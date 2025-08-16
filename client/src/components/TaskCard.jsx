@@ -8,10 +8,10 @@ export function TaskCard({ task }) {
     }
 
     return (
-        <div onClick={handleEdit}>
-            <h3>{task.title}</h3>
-            <p>{task.description}</p>
-            <hr />
+        <div onClick={handleEdit} className="bg-gray-800 p-4 rounded-md cursor-pointer hover:bg-gray-700">
+            <h3 className="text-lg font-semibold">{task.title}</h3>
+            <p className="text-gray-400">{task.description}</p>
+
         </div>
     )
 }

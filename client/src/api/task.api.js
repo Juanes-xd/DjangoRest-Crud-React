@@ -31,7 +31,7 @@ export const createTask = async (task) => {
 
 export const deleteTask = async (id) => {
     try {
-        const response = await taskApi.delete(`/${id}`);
+        const response = await taskApi.delete(`/${id}/`);
         return response;
     } catch (error) {
         console.error("Error deleting task:", error);

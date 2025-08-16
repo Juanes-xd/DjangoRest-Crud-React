@@ -21,7 +21,7 @@ export default function TaskList() {
 
 
     return (
-        <div>
+        <div className="grid grid-cols-3 gap-3">
             {Array.isArray(tasks) ? (
                 tasks.map((task) => (
                     <TaskCard key={task.id} task={task} />
