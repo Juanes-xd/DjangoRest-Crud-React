@@ -2,7 +2,7 @@ import axios from 'axios'
 
 
 const taskApi = axios.create({
-    baseURL: "http://localhost:8000/tasks/api/v1/tasks"
+    baseURL: `${import.meta.env.VITE_API_URL}/tasks/api/v1/tasks`
 
 });
 

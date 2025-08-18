@@ -16,7 +16,7 @@ export default function RegisterPage() {
         e.preventDefault();
         setError("");
         try {
-            const res = await fetch("http://localhost:8000/tasks/api/v1/auth/register/", {
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/tasks/api/v1/auth/register/`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(form)
