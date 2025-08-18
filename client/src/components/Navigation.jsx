@@ -1,6 +1,12 @@
-import { Link } from "react-router-dom"
+import { Link, useLocation, useNavigate } from "react-router-dom"
+import { useAuth } from "../auth/useAuth";
 
 export function Navigation() {
+    const { access, logout } = useAuth();
+    const location = useLocation();
+    const navigate = useNavigate();
+    // Ocultar logout en login y register
+    const hideLogout = ["/login", "/register"].includes(location.pathname);
     return (
         <div className="flex justify-between py-3 bg-gray-800 p-4 rounded-md mb-4">
             <nav>
@@ -15,6 +21,9 @@ export function Navigation() {
                     </li>
                 </ul>
             </nav>
+            {access && !hideLogout && (
+                <button onClick={() => { logout(); navigate("/login"); }} className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600">Logout</button>
+            )}
         </div>
     )
 }

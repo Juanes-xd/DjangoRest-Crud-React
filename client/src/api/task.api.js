@@ -1,8 +1,24 @@
 import axios from 'axios'
 
+
 const taskApi = axios.create({
-    baseURL: "http://localhost:8000/tasks/api/v1/tasks"
-})
+    baseURL: `${import.meta.env.VITE_API_URL}/tasks/api/v1/tasks`
+
+});
+
+// Interceptor para agregar el token JWT si existe
+taskApi.interceptors.request.use(
+    (config) => {
+        const token = localStorage.getItem("access");
+        if (token) {
+            config.headers["Authorization"] = `Bearer ${token}`;
+        }
+        return config;
+    },
+    (error) => Promise.reject(error)
+);
+
+
 
 
 export const getAllTask = async () => {

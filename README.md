@@ -26,6 +26,20 @@ DjangoRest-Crud-React/
 │   │   └── pages/          # Páginas React
 ```
 
+### Variables de entorno (cliente)
+En la carpeta `client` crea un archivo `.env`:
+```
+VITE_API_URL=http://localhost:8000
+```
+El frontend usará esta variable para conectarse a la API.
+
+## Endpoints de autenticación
+- Registro: `/tasks/api/v1/auth/register/`
+- Login: `/tasks/api/v1/auth/login/`
+- Refresh: `/tasks/api/v1/auth/token/refresh/`
+
+Solo usuarios autenticados pueden acceder y gestionar sus propias tareas.
+
 ## Instalación
 
 ### Backend (Django)
